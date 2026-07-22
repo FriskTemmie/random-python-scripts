@@ -1,5 +1,8 @@
 # Made in 06/04/2025. I put some effort into this, so it should work unless you try to break it. https://www.programiz.com/python-programming/online-compiler/
 
+# TODO: Add option to not use the reserve
+# TODO: Change discount values to percentage, and "installmentPrice" to the first/slash installment, aka the one that you pay more/less than the others
+# TODO: Add option for fees (if 0, ignore)
 reserve = 7578.17           # Money you have saved. Don't count the price of the product.
 installments = 10           # Months to pay in payd in installments.
 gainsPercent = 0.0118       # Your average gains per month in percentage (100% = 1).
@@ -12,13 +15,13 @@ ifFullReserve = reserve - (noDiscoutPrice - discount)
 for i in range (installments):
     ifFullReserve = ifFullReserve + (ifFullReserve * gainsPercent)
     #print(ifFullReserve)
-print(f'Money after 10 months if full: {ifFullReserve}')
+print(f'Money after {installments} months if full: {ifFullReserve}')
 
 # If you buy in installments.
 for i in range (installments):
     reserve = reserve + (reserve * gainsPercent)
     reserve = reserve - installmentPrice
-print(f'Money after 10 months if installments: {reserve}')
+print(f'Money after {installments} months if installments: {reserve}')
 
 if reserve > ifFullReserve:
     print(f'Buy in installments. Difference: {reserve - ifFullReserve}')
